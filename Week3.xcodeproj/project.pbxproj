@@ -19,6 +19,8 @@
 		E25C59681952809D00A345ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25C59501952809D00A345ED /* UIKit.framework */; };
 		E25C59701952809D00A345ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E25C596E1952809D00A345ED /* InfoPlist.strings */; };
 		E25C59721952809D00A345ED /* Week3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E25C59711952809D00A345ED /* Week3Tests.m */; };
+		E25C597E195280C200A345ED /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25C597C195280C200A345ED /* MainViewController.m */; };
+		E25C597F195280C200A345ED /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25C597D195280C200A345ED /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		E25C596D1952809D00A345ED /* Week3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Week3Tests-Info.plist"; sourceTree = "<group>"; };
 		E25C596F1952809D00A345ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E25C59711952809D00A345ED /* Week3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Week3Tests.m; sourceTree = "<group>"; };
+		E25C597B195280C200A345ED /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
+		E25C597C195280C200A345ED /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
+		E25C597D195280C200A345ED /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = ../MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +112,7 @@
 		E25C59521952809D00A345ED /* Week3 */ = {
 			isa = PBXGroup;
 			children = (
+				E25C5980195282FB00A345ED /* MainView */,
 				E25C595B1952809D00A345ED /* AppDelegate.h */,
 				E25C595C1952809D00A345ED /* AppDelegate.m */,
 				E25C595E1952809D00A345ED /* Images.xcassets */,
@@ -142,6 +148,16 @@
 				E25C596E1952809D00A345ED /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E25C5980195282FB00A345ED /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				E25C597B195280C200A345ED /* MainViewController.h */,
+				E25C597C195280C200A345ED /* MainViewController.m */,
+				E25C597D195280C200A345ED /* MainViewController.xib */,
+			);
+			name = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E25C59571952809D00A345ED /* InfoPlist.strings in Resources */,
+				E25C597F195280C200A345ED /* MainViewController.xib in Resources */,
 				E25C595F1952809D00A345ED /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E25C595D1952809D00A345ED /* AppDelegate.m in Sources */,
+				E25C597E195280C200A345ED /* MainViewController.m in Sources */,
 				E25C59591952809D00A345ED /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +455,7 @@
 				E25C59771952809D00A345ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E25C59781952809D00A345ED /* Build configuration list for PBXNativeTarget "Week3Tests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +464,7 @@
 				E25C597A1952809D00A345ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
