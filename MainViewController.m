@@ -15,13 +15,15 @@
 @property (weak, nonatomic) IBOutlet UIImageView *accountView;
 @property (assign,nonatomic) CGPoint originalCenter;
 - (IBAction)pressNews:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *horScroll;
+
 
 @end
 
 @implementation MainViewController
 
 {
-    CGPoint updateCenter;
+    float centerY;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,6 +31,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        centerY = 0;
+        
     }
     return self;
 }
@@ -42,6 +46,8 @@
     self.originalCenter = CGPointMake(self.newsView.center.x, self.newsView.center.y);
     
     self.accountView.alpha = 0;
+
+    self.horScroll.contentSize = CGSizeMake(100000, 507);
     
 }
 
@@ -53,48 +59,54 @@
 
 - (IBAction)newsPan:(UIPanGestureRecognizer *)sender {
     
-    CGPoint touchPosition = [sender locationInView:self.view];
-    CGPoint vel = [sender velocityInView:self.view];
+    CGPoint offset = [sender translationInView:self.view];
     
     if (sender.state == UIGestureRecognizerStateBegan) {
+        centerY = self.newsView.center.y;
         
-        //Help remember center
-        updateCenter = CGPointMake(self.newsView.center.x, touchPosition.y - self.newsView.center.y);
   
     }
     
+    
+    else if (sender.state == UIGestureRecognizerStateChanged && self.newsView.center.y < 284){
+
+        NSLog(@"%f", self.newsView.center.y);
+        self.newsView.center = CGPointMake(self.newsView.center.x, centerY + offset.y * .1);
+        
+        // Hide Settings View
+        self.accountView.alpha = 0;
+        
+        
+    }
+         
+
+
     else if (sender.state == UIGestureRecognizerStateChanged){
         
         //Move the view around
-        self.newsView.center = CGPointMake(self.newsView.center.x, touchPosition.y - updateCenter.y);
+        self.newsView.center = CGPointMake(self.newsView.center.x, centerY + offset.y * .9);
+
         
         //Show View
         [UIView animateWithDuration:0.4  animations:^{
             self.accountView.alpha = 1;
         } completion:nil];
-        
-        //Velocity Check
-        NSLog(@"Velocity %f", vel.y);
+    
         
     }
     
-    else if (sender.state == UIGestureRecognizerStateChanged | self.newsView.center.y < 284){
-
-
-        self.newsView.center = CGPointMake
-        (self.newsView.center.x, (touchPosition.y - updateCenter.y) * .5);
+    else if (sender.state == UIGestureRecognizerStateEnded && self.newsView.center.y < 500){
+        
+                    // News View to Origin
+                   [UIView animateWithDuration:0.4  animations:^
+                    {
+                       self.newsView.center = CGPointMake(self.newsView.center.x, self.originalCenter.y);} completion:nil];
         
     }
-         
-//            // News View to Origin
-//            [UIView animateWithDuration:0.4  animations:^
-//            {
-//                self.newsView.center = CGPointMake(self.newsView.center.x, self.originalCenter.y);} completion:nil];
 
-    
     
     // Animate Down
-    else if (sender.state == UIGestureRecognizerStateChanged | self.newsView.center.y > 500)
+    else if (sender.state == UIGestureRecognizerStateEnded && self.newsView.center.y >501)
     {
         //Show Settings View
         [UIView animateWithDuration:0.4  animations:^{
@@ -108,7 +120,7 @@
     }
     
      // Animate Up
-    else if (sender.state == UIGestureRecognizerStateEnded | self.newsView.center.y > 430)
+    else if (sender.state == UIGestureRecognizerStateEnded && self.newsView.center.y > 500)
     {
         
         // News View to Origin
@@ -118,7 +130,7 @@
         } completion:nil];
         
         // Hide Settings View
-        [UIView animateWithDuration:0.4  animations:^{
+        [UIView animateWithDuration:0.2  animations:^{
             self.accountView.alpha = 0;
         } completion:nil];
         
@@ -126,12 +138,19 @@
 }
 
 - (IBAction)pressNews:(UIButton *)sender {
-    if (self.newsView.center.x, 805)
-        
+    if (self.newsView.center.y >= 805)
+
         // News View to Origin
-        [UIView animateWithDuration:0.6  animations:^
+        [UIView animateWithDuration:0.3  animations:^
          {
              self.newsView.center = CGPointMake(self.newsView.center.x, self.originalCenter.y);} completion:nil];
+    
+    // Hide Settings View
+    [UIView animateWithDuration:0.3  animations:^{
+        self.accountView.alpha = 0;
+    } completion:nil];
+
+
 }
 
 @end

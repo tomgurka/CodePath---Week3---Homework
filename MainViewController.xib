@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
                 <outlet property="accountView" destination="8Kc-ZH-QRf" id="rmr-nz-nbN"/>
+                <outlet property="horScroll" destination="ZO5-Xg-PCa" id="5mV-Nu-o64"/>
                 <outlet property="newsView" destination="ntc-3y-C05" id="oss-C3-B4a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,10 +33,6 @@
                                 <outletCollection property="gestureRecognizers" destination="ZkS-WQ-vT6" appends="YES" id="pMy-cl-r00"/>
                             </connections>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="xKp-or-Nv3">
-                            <rect key="frame" x="0.0" y="314" width="320" height="254"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-3P-BJN">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -46,6 +43,16 @@
                                 <action selector="pressNews:" destination="-1" eventType="touchUpInside" id="gjg-0W-GGr"/>
                             </connections>
                         </button>
+                        <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO5-Xg-PCa">
+                            <rect key="frame" x="-24" y="314" width="368" height="254"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="xKp-or-Nv3">
+                                    <rect key="frame" x="-539" y="0.0" width="1445" height="254"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                        </scrollView>
                     </subviews>
                     <color key="backgroundColor" red="0.82745098039999998" green="0.83921568629999999" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                     <gestureRecognizers/>
